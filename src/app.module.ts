@@ -7,19 +7,24 @@ import { MongooseModule } from '@nestjs/mongoose'
 import { ServeStaticModule } from '@nestjs/serve-static'
 import { EnvConfiguration } from './config/app.config'
 import { join } from 'path'
+import { ProductsModule } from './products/products.module'
 
 @Module({
-  imports: [ConfigModule.forRoot({
-    load: [EnvConfiguration],
-    validationSchema: JoiValidationSchema
-  }),
-  ServeStaticModule.forRoot({
-    rootPath: join(__dirname, '..', 'public'),
-  }),
-  MongooseModule.forRoot(process.env.MONGO_DB as string, {
-    dbName: 'supermarket-diff'
-  }),
-  CommonModule, SeedModule],
+  imports: [
+    ConfigModule.forRoot({
+      load: [EnvConfiguration],
+      validationSchema: JoiValidationSchema,
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+    }),
+    MongooseModule.forRoot(process.env.MONGO_DB as string, {
+      dbName: 'supermarket-diff',
+    }),
+    CommonModule,
+    SeedModule,
+    ProductsModule,
+  ],
   controllers: [],
   providers: [],
 })

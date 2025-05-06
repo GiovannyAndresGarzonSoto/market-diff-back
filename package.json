@@ -28,6 +28,7 @@
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/serve-static": "^5.0.3",
     "axios": "^1.9.0",
+    "class-validator": "^0.14.2",
     "express": "^5.1.0",
     "joi": "^17.13.3",
     "market-diff-back": ".",
@@ -77,5 +78,8 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "trustedDependencies": [
+    "@nestjs/core"
+  ]
 }
